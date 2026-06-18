@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yurkagon.github.io/react-liquid-glass-svg/sitemap.xml

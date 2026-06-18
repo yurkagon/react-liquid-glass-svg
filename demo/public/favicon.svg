@@ -1,0 +1,39 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  fill="none"
+>
+  <defs>
+    <linearGradient id="lg-grad" x1="20%" y1="10%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="oklch(0.86 0.12 200)" />
+      <stop offset="45%" stop-color="oklch(0.74 0.15 245)" />
+      <stop offset="100%" stop-color="oklch(0.66 0.2 300)" />
+    </linearGradient>
+    <radialGradient id="lg-glow" cx="32%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75" />
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="lg-rim" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base squircle with gradient fill -->
+  <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#lg-grad)" />
+
+  <!-- Specular radial glow in top-left -->
+  <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#lg-glow)" />
+
+  <!-- Inner rim highlight -->
+  <rect
+    x="6.5"
+    y="6.5"
+    width="51"
+    height="51"
+    rx="17.5"
+    fill="none"
+    stroke="url(#lg-rim)"
+    stroke-width="1"
+  />
+</svg>

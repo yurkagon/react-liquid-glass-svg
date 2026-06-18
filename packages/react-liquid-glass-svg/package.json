@@ -1,0 +1,85 @@
+{
+  "name": "react-liquid-glass-svg",
+  "version": "1.0.4",
+  "type": "module",
+  "description": "Apple liquid glass for React — pure SVG filters and backdrop-blur. No WebGL, no canvas, no shaders.",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/yurkagon/react-liquid-glass-svg#readme",
+  "scripts": {
+    "sync-meta": "node scripts/copy-meta.mjs",
+    "build": "pnpm sync-meta && tsc && vite build",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "pnpm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurkagon/react-liquid-glass-svg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yurkagon/react-liquid-glass-svg/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "react",
+    "liquid-glass",
+    "frosted-glass",
+    "glassmorphism",
+    "glass-effect",
+    "svg-filter",
+    "displacement-map",
+    "backdrop-filter",
+    "refraction",
+    "ios",
+    "apple",
+    "polymorphic",
+    "typescript",
+    "nextjs",
+    "tailwind"
+  ],
+  "author": {
+    "name": "Yurii Khvyshchuk"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/coverage-v8": "^4.1.8",
+    "jsdom": "^29.1.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vite-plugin-dts": "^5.0.2",
+    "vitest": "^4.1.8"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

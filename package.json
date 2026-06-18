@@ -1,0 +1,44 @@
+{
+  "name": "react-liquid-glass-svg-workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter demo dev",
+    "build:lib": "pnpm --filter react-liquid-glass-svg build",
+    "build:demo": "pnpm --filter demo build",
+    "build": "pnpm -r build",
+    "deploy": "pnpm build:demo && touch demo/dist/.nojekyll && gh-pages -d demo/dist --dotfiles",
+    "publish:lib": "pnpm --filter react-liquid-glass-svg publish",
+    "test": "pnpm --filter react-liquid-glass-svg test",
+    "test:run": "pnpm --filter react-liquid-glass-svg test:run",
+    "test:coverage": "pnpm --filter react-liquid-glass-svg test:coverage",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx,json,md,css,html,yaml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.9.3",
+    "eslint": "^10.4.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.8.4",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "typescript-eslint": "^8.61.0"
+  }
+}

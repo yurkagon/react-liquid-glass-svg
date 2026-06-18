@@ -1,0 +1,346 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-bg: #0a0b10;
+  --color-bg2: #0e1018;
+  --color-panel: #12141d;
+  --color-ink: #eef0f6;
+  --color-inkdim: #aab0c2;
+  --color-inkfaint: #6b7186;
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-accent: oklch(0.74 0.15 245);
+  --color-accent2: oklch(0.74 0.15 300);
+  --color-accent3: oklch(0.78 0.14 190);
+
+  --font-disp: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px;
+}
+body {
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* faint global texture so dark areas aren't dead flat */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      900px 600px at 12% -5%,
+      oklch(0.4 0.12 270 / 0.2),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 600px at 100% 0%,
+      oklch(0.42 0.12 200 / 0.16),
+      transparent 55%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Logo mark -------------------------------------------------- */
+.brand__mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  flex: none;
+  background:
+    radial-gradient(circle at 30% 25%, #fff8, transparent 45%),
+    linear-gradient(
+      135deg,
+      oklch(0.78 0.14 190),
+      oklch(0.74 0.15 245),
+      oklch(0.74 0.15 300)
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 4px 14px oklch(0.6 0.16 260 / 0.5);
+}
+
+/* ================================================================
+   ANIMATED PRISMATIC BACKGROUNDS (what the glass refracts)
+================================================================ */
+.gb {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.gb__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(46px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+.gb__blob--1 {
+  width: 46%;
+  height: 60%;
+  left: -6%;
+  top: -8%;
+  animation: float1 17s ease-in-out infinite;
+}
+.gb__blob--2 {
+  width: 42%;
+  height: 56%;
+  right: -8%;
+  top: 4%;
+  animation: float2 21s ease-in-out infinite;
+}
+.gb__blob--3 {
+  width: 50%;
+  height: 60%;
+  left: 18%;
+  bottom: -22%;
+  animation: float3 19s ease-in-out infinite;
+}
+.gb__blob--4 {
+  width: 30%;
+  height: 42%;
+  right: 14%;
+  bottom: -6%;
+  animation: float1 24s ease-in-out infinite reverse;
+}
+.gb__grid {
+  position: absolute;
+  inset: -2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(7%, 9%) scale(1.12);
+  }
+}
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate(-9%, 7%) scale(0.92);
+  }
+}
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, -8%) scale(1.15);
+  }
+}
+
+/* variant palettes */
+.gb--aurora .gb__blob--1 {
+  background: #4f7bff;
+}
+.gb--aurora .gb__blob--2 {
+  background: #b14bff;
+}
+.gb--aurora .gb__blob--3 {
+  background: #1fd6c0;
+}
+.gb--aurora .gb__blob--4 {
+  background: #ff5fae;
+}
+.gb--violet .gb__blob--1 {
+  background: #7a3cff;
+}
+.gb--violet .gb__blob--2 {
+  background: #c84bff;
+}
+.gb--violet .gb__blob--3 {
+  background: #4f6bff;
+}
+.gb--violet .gb__blob--4 {
+  background: #ff67d4;
+}
+.gb--sunset .gb__blob--1 {
+  background: #ff8a3d;
+}
+.gb--sunset .gb__blob--2 {
+  background: #ff4d6d;
+}
+.gb--sunset .gb__blob--3 {
+  background: #ffd166;
+}
+.gb--sunset .gb__blob--4 {
+  background: #ff5fae;
+}
+.gb--lime .gb__blob--1 {
+  background: #6fe36f;
+}
+.gb--lime .gb__blob--2 {
+  background: #1fd6c0;
+}
+.gb--lime .gb__blob--3 {
+  background: #c9f24d;
+}
+.gb--lime .gb__blob--4 {
+  background: #36c9ff;
+}
+.gb--ocean .gb__blob--1 {
+  background: #2bb6ff;
+}
+.gb--ocean .gb__blob--2 {
+  background: #4f6bff;
+}
+.gb--ocean .gb__blob--3 {
+  background: #1fd6c0;
+}
+.gb--ocean .gb__blob--4 {
+  background: #6f8bff;
+}
+.gb--magenta .gb__blob--1 {
+  background: #ff4da6;
+}
+.gb--magenta .gb__blob--2 {
+  background: #b14bff;
+}
+.gb--magenta .gb__blob--3 {
+  background: #ff6f91;
+}
+.gb--magenta .gb__blob--4 {
+  background: #6f4bff;
+}
+.gb--prism .gb__blob--1 {
+  background: #ff5fae;
+}
+.gb--prism .gb__blob--2 {
+  background: #36c9ff;
+}
+.gb--prism .gb__blob--3 {
+  background: #c9f24d;
+}
+.gb--prism .gb__blob--4 {
+  background: #b14bff;
+}
+.gb--grid .gb__blob--1 {
+  background: #4f7bff;
+}
+.gb--grid .gb__blob--2 {
+  background: #b14bff;
+}
+.gb--grid .gb__blob--3 {
+  background: #1fd6c0;
+}
+.gb--grid .gb__blob--4 {
+  background: #ff5fae;
+}
+.gb--grid .gb__grid {
+  opacity: 1;
+  animation: grid-pan 6s linear infinite;
+}
+
+@keyframes grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gb__blob,
+  .gb__grid {
+    animation: none !important;
+  }
+}
+
+/* overlay that fades the aurora into the page background */
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 11, 16, 0.4) 0%,
+    rgba(10, 11, 16, 0.62) 55%,
+    #0a0b10 100%
+  );
+}
+.footer__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #0a0b10 0%,
+    rgba(10, 11, 16, 0.55) 40%,
+    rgba(10, 11, 16, 0.85) 100%
+  );
+}
+
+/* ================================================================
+   CODE TOKENS (highlight colors injected via dangerouslySetInnerHTML)
+================================================================ */
+.tk-tag {
+  color: #7fd1ff;
+}
+.tk-attr {
+  color: #c9a6ff;
+}
+.tk-str {
+  color: #9cf0a8;
+}
+.tk-num {
+  color: #ffcf7a;
+}
+.tk-kw {
+  color: #ff8fb0;
+}
+
+/* ================================================================
+   RANGE SLIDER (thumb styling has no utility equivalent)
+================================================================ */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: linear-gradient(90deg, oklch(0.74 0.15 245), oklch(0.74 0.15 300))
+    no-repeat;
+  background-size: var(--pct, 50%) 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #cfe0ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #cfe0ff;
+  cursor: pointer;
+}
