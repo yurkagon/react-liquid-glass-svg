@@ -37,7 +37,7 @@ That's the entire trick. **No shaders. No canvas. No WebGL.** ~2 KB gzip.
 
 ## ✨ Features
 
-|                            |                                                                                         |
+| Feature                    | Description                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------- |
 | 🪟 **Apple liquid glass**  | Real displacement-mapped refraction on Chromium/Firefox; noise+blur fallback on Safari. |
 | ⚡ **~2 KB gzipped**       | One file, zero runtime deps. Tree-shakable, `sideEffects: false`.                       |
@@ -175,25 +175,6 @@ Drop a colorful background behind it — gradient, image, video — and you'll s
 
 Tweak every prop in real time, copy the result:
 **→ [yurkagon.github.io/react-liquid-glass-svg/#sandbox](https://yurkagon.github.io/react-liquid-glass-svg/#sandbox)**
-
-## 🧬 How it works
-
-```
-┌──────────────────────────────────────────────────┐
-│ outer <Tag>  position:relative; overflow:hidden  │
-│ ┌──────────────────────────────────────────────┐ │
-│ │ z:0  backdrop-filter: blur() + filter: url() │ │ ← noise + displacement
-│ ├──────────────────────────────────────────────┤ │
-│ │ z:1  tint background                         │ │ ← tintColor
-│ ├──────────────────────────────────────────────┤ │
-│ │ z:2  sheen overlay (when glassBorder)        │ │ ← gradient + inset shadow
-│ ├──────────────────────────────────────────────┤ │
-│ │ z:3  content (your children)                 │ │
-│ └──────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────┘
-```
-
-The SVG filter chain lives in a hidden `<svg>` next to the component and is referenced by a unique id generated via `useId()` — safe for SSR and for many instances on one page.
 
 ## 📖 API
 

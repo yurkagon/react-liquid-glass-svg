@@ -1,6 +1,6 @@
 {
   "name": "react-liquid-glass-svg",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "Apple liquid glass for React — pure SVG filters and backdrop-blur. No WebGL, no canvas, no shaders.",
   "main": "./dist/index.cjs",
